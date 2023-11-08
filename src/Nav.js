@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+ /** Nav: Renders navigation bar.
+  *
+  * Nav -> {Home, Companies, Jobs} */
+ 
 function Nav() {
   return (
     <ul>
