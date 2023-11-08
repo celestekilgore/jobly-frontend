@@ -68,7 +68,13 @@ class JoblyApi {
     return res.company;
   }
 
-  // obviously, you'll add a lot here ...
+  /** Get array of companies with names like search term. */
+
+  static async searchForCompanies(term) {
+    let res = await this.request(`companies`,{nameLike:term},"GET");
+    return res.companies;
+  }
+
 }
 
 export { JoblyApi };

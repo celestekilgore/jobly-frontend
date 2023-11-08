@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JoblyApi } from "./api";
 import CompanyList from "./CompanyList";
+import SearchForm from "./SearchForm";
 
 
 /** Fetches data for all companies and renders CompanyList.
@@ -28,10 +29,22 @@ function CompanyListPage() {
     fetchCompanies();
   }, []);
 
+  async function search(term) {
+    const filteredCompanies = await JoblyApi.searchForCompanies(term);
+    console.log("filtered companies in search", filteredCompanies);
+    setCompanies({
+      data: filteredCompanies,
+      isLoading: false
+    });
+  }
+
   if (companies.isLoading) return <i>Loading...</i>;
 
   return (
-    <CompanyList companies={companies.data}/>
+    <div>
+      <SearchForm search={search} />
+      <CompanyList companies={companies.data}/>
+    </div>
   );
 
 }
