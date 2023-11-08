@@ -46,13 +46,20 @@ class JoblyApi {
         console.log(error.message)
         throw [error.message];
       }
-      
+
     }
 
     return await resp.json();
   }
 
   // Individual API routes
+
+  /** Get details for all companies. */
+
+  static async getCompanies() {
+    let res = await this.request(`companies`);
+    return res.companies;
+  }
 
   /** Get details on a company by handle. */
 
@@ -63,3 +70,5 @@ class JoblyApi {
 
   // obviously, you'll add a lot here ...
 }
+
+export { JoblyApi };
