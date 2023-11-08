@@ -4,7 +4,7 @@ import CompanyList from "./CompanyList";
 import SearchForm from "./SearchForm";
 
 
-/** Fetches data for all companies and renders CompanyList.
+/** Fetches data for all companies and renders CompanyList and SearchForm.
  *
  * State:
  * - companies: object like { data: [{Company1}, {Company2}, ... ], isLoading: false }
