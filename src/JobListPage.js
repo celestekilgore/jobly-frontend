@@ -19,12 +19,7 @@ function JobListPage() {
 
   useEffect(function fetchJobsWhenMounted() {
     async function fetchJobs() {
-      const companies = await JoblyApi.getJobs();
-
-      setJobs({
-        data: companies,
-        isLoading: false
-      });
+      search();
     }
     fetchJobs();
   }, []);
@@ -40,14 +35,14 @@ function JobListPage() {
   if (jobs.isLoading) return <i>Loading...</i>;
 
   return (
-    <div>
+    <div className="JobListPage">
       <SearchForm search={search} />
       {jobs.data.length !== 0
-      ? <JobList jobs={jobs.data}/>
-      : <i>Error: No matching job found.</i>}
+        ? <JobList jobs={jobs.data} />
+        : <i>No matching job found.</i>
+      }
     </div>
   );
-
 }
 
 export default JobListPage;

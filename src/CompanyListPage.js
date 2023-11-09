@@ -19,12 +19,7 @@ function CompanyListPage() {
 
   useEffect(function fetchCompaniesWhenMounted() {
     async function fetchCompanies() {
-      const companies = await JoblyApi.getCompanies();
-
-      setCompanies({
-        data: companies,
-        isLoading: false
-      });
+      search();
     }
     fetchCompanies();
   }, []);
@@ -41,11 +36,11 @@ function CompanyListPage() {
   if (companies.isLoading) return <i>Loading...</i>;
 
   return (
-    <div>
+    <div className="CompanyListPage">
       <SearchForm search={search} />
       {companies.data.length !== 0
-      ? <CompanyList companies={companies.data}/>
-      : <i>Error: No matching company found.</i>}
+        ? <CompanyList companies={companies.data} />
+        : <i>No matching company found.</i>}
     </div>
   );
 

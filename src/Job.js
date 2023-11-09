@@ -9,16 +9,16 @@ import React from "react";
  */
 
 
-function Job({job}) {
+function Job({ job }) {
   return (
-    <div>
+    <div className="Job">
       <h2>{job.title}</h2>
       {job.companyName && <p>{job.companyName}</p>}
       {job.salary && <p>Salary: {job.salary}</p>}
       {job.equity && <p>Equity: {job.equity}</p>}
 
     </div>
-  )
+  );
 }
 
 export default Job;

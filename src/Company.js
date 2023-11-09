@@ -10,16 +10,16 @@ import { Link } from "react-router-dom";
  */
 
 
-function Company({company}) {
+function Company({ company }) {
   return (
-    <div>
+    <div className="Company">
       <Link to={`/companies/${company.handle}`} >
-      <h2>{company.name}</h2>
-      <p>{company.description}</p>
-      {company.logoUrl && <img src={company.logoUrl} />}
+        <h2>{company.name}</h2>
+        <p>{company.description}</p>
+        {company.logoUrl && <img src={company.logoUrl} />}
       </Link>
     </div>
-  )
+  );
 }
 
 export default Company;

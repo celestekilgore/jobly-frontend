@@ -7,7 +7,8 @@ import JobList from "./JobList";
 /** Displays company details and renders list of related jobs.
  *
  * State:
- * - company: object like { data: [{Company1}, {Company2}, ... ], isLoading: false }
+ * - company: object like { data: [{Company1}, {Company2}, ... ], isLoading: false,
+ *  errrors: [] }
  *
  * RouteList -> CompanyDetailsPage -> JobList
  */
@@ -20,7 +21,7 @@ function CompanyDetailsPage() {
     errors: null,
   });
 
-  useEffect(function fetchCompanyWhenMounted() {
+  useEffect(function fetchCompanyByName() {
     async function fetchCompany() {
       try {
         const company = await JoblyApi.getCompany(companyName);
@@ -37,18 +38,18 @@ function CompanyDetailsPage() {
           errors: err
         });
       }
-  }
+    }
     fetchCompany();
-  }, []);
+  }, [companyName]);
 
   if (company.isLoading) return <i>Loading...</i>;
-  else if (company.errors) return <i>Error: Company does not exist.</i>
+  if (company.errors) return <i>Not found.</i>;
 
   return (
-    <div>
+    <div className="CompanyDetailsPage">
       <h2>{company.data.name}</h2>
       <p>{company.data.description}</p>
-      <JobList jobs={company.data.jobs}/>
+      <JobList jobs={company.data.jobs} />
     </div>
   );
 

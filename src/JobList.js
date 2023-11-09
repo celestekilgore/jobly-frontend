@@ -9,14 +9,14 @@ import Job from "./Job";
  *
  * { CompanyDetailsPage, JobListPage} -> JobList -> Job
  */
-function JobList({jobs}) {
+function JobList({ jobs }) {
   return (
-    <div>
+    <div className="JobList">
       {jobs.map(job => (
         <Job key={job.id} job={job} />
       ))}
     </div>
-  )
+  );
 
 }
 

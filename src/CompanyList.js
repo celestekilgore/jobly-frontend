@@ -9,15 +9,14 @@ import Company from "./Company";
  *
  * CompanyListPage -> CompanyList -> Company
  */
-function CompanyList({companies}) {
+function CompanyList({ companies }) {
   return (
-    <div>
+    <div className="CompanyList">
       {companies.map(company => (
         <Company key={company.handle} company={company} />
       ))}
     </div>
-  )
-
+  );
 }
 
 export default CompanyList;

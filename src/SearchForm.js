@@ -1,5 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
+/** Form for searching.
+ *
+ * State:
+ * - term: search term string
+ *
+ * Props:
+ * - search: function to call in parent
+ *
+ * { CompanyListPage, JobListPage } -> SearchForm
+ */
 function SearchForm({ search }) {
 
   const [term, setTerm] = useState("");
@@ -15,7 +25,7 @@ function SearchForm({ search }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="SearchForm">
       <input value={term} onChange={handleChange} />
       <button>Search!</button>
     </form>
