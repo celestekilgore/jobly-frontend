@@ -35,16 +35,16 @@ function LoginForm({ login }) {
       <label htmlFor="LoginForm-username">Username</label>
       <input
         name="username"
-        className="LoginForm-username"
+        className="LoginForm-username form-control"
         value={formData.username}
         onChange={handleChange} />
       <label htmlFor="LoginForm-password">Password</label>
       <input
         name="password"
-        className="LoginForm-password"
+        className="LoginForm-password form-control"
         value={formData.password}
         onChange={handleChange} />
-      <button>Login</button>
+      <button className="btn btn-primary">Login</button>
     </form>
   );
 }

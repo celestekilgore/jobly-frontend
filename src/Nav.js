@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <ul className="Nav">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/companies">Companies</Link></li>
-      <li><Link to="/jobs">Jobs</Link></li>
-    </ul>
+    <nav className="Nav navbar navbar-light bg-light p-3 mb-3">
+      <Link to="/">Home</Link>
+      <Link to="/companies">Companies</Link>
+      <Link to="/jobs">Jobs</Link>
+    </nav>
   );
 }
 

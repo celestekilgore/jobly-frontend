@@ -26,8 +26,8 @@ function SearchForm({ search }) {
 
   return (
     <form onSubmit={handleSubmit} className="SearchForm">
-      <input value={term} onChange={handleChange} />
-      <button>Search!</button>
+      <input className="form-control" value={term} onChange={handleChange} />
+      <button className="btn btn-primary">Search!</button>
     </form>
   );
 }

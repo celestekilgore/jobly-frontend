@@ -44,38 +44,38 @@ function SignupForm({ signUp }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="SignupForm">
+    <form onSubmit={handleSubmit} className="SignupForm form-control">
       <label htmlFor="SignupForm-username">Username</label>
       <input
         name="username"
-        className="SignupForm-username"
+        className="SignupForm-username form-control"
         value={formData.username}
         onChange={handleChange} />
       <label htmlFor="SignupForm-password">Password</label>
       <input
         name="password"
-        className="SignupForm-password"
+        className="SignupForm-password form-control"
         value={formData.password}
         onChange={handleChange} />
       <label htmlFor="SignupForm-firstName">First Name</label>
       <input
         name="firstName"
-        className="SignupForm-firstName"
+        className="SignupForm-firstName form-control"
         value={formData.firstName}
         onChange={handleChange} />
       <label htmlFor="SignupForm-lastName">Last Name</label>
       <input
         name="lastName"
-        className="SignupForm-lastName"
+        className="SignupForm-lastName form-control"
         value={formData.lastName}
         onChange={handleChange} />
       <label htmlFor="SignupForm-email">Email</label>
         <input
           name="email"
-          className="SignupForm-email"
+          className="SignupForm-email form-control"
           value={formData.email}
           onChange={handleChange} />
-      <button>Sign Up</button>
+      <button className="btn btn-primary">Sign Up</button>
     </form>
   );
 }
