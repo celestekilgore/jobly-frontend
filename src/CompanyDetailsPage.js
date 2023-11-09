@@ -8,10 +8,11 @@ import JobList from "./JobList";
  *
  * State:
  * - company: object like { data: [{Company1}, {Company2}, ... ], isLoading: false,
- *  errrors: [] }
+ *  errors: [] }
  *
  * RouteList -> CompanyDetailsPage -> JobList
  */
+
 function CompanyDetailsPage() {
   const { companyName } = useParams();
 

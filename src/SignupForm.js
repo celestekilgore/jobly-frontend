@@ -20,9 +20,16 @@ function SignupForm({ signUp }) {
     email: null
   });
 
+  /** Update form inputs. */
   function handleChange(evt) {
-    setFormData(evt.target.value);
+    console.log(formData);
+    const input = evt.target;
+    setFormData(formData => ({
+      ...formData,
+      [input.name]: input.value,
+    }));
   }
+
 
   function handleSubmit(evt) {
     evt.preventDefault();

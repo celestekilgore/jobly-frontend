@@ -12,9 +12,10 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  static token = "";
 
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
@@ -76,6 +77,45 @@ class JoblyApi {
     let res = await this.request(`jobs`, data, "GET");
     return res.jobs;
   }
+
+
+  /** Get user's token which can be used to authenticate further requests.
+   *
+   * Accepts loginInfo like {username, password}
+  */
+
+  static async getLoginToken(loginInfo) {
+    console.log(loginInfo)
+    let res = await this.request(`auth/token`,loginInfo, "POST");
+    return res.token;
+  }
+
+  /** Register new user and get user's token which can be used to authenticate
+   * further requests.
+   *
+   * Accepts registration info like
+   * {username, password, firstName, lastName, email}
+  */
+
+  static async getRegisterToken(registrationInfo) {
+    let res = await this.request(`auth/register`,registrationInfo, "POST");
+    return res.token;
+  }
+
+  /** Get all information about a specific user by username
+   *
+   * Takes in username and user's auth token
+   *
+   * Returns
+   *  { username, firstName, lastName, email, isAdmin, applications }
+
+  */
+ 
+  static async getUserData(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
 }
 
 export { JoblyApi };

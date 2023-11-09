@@ -12,16 +12,22 @@ import React, { useState } from "react";
  */
 function LoginForm({ login }) {
 
-  const [formData, setFormData] = useState({ username: null, password: null });
+  const [formData, setFormData] = useState({username:"",password:""});
 
+  /** Update form inputs. */
   function handleChange(evt) {
-    setFormData(evt.target.value);
+    console.log(formData);
+    const input = evt.target;
+    setFormData(formData => ({
+      ...formData,
+      [input.name]: input.value,
+    }));
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
     login(formData);
-    setFormData({ username: null, password: null });
+    setFormData({ username: "", password: "" });
   }
 
   return (
