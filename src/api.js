@@ -85,9 +85,13 @@ class JoblyApi {
   */
 
   static async getLoginToken(loginInfo) {
-    console.log(loginInfo)
-    let res = await this.request(`auth/token`,loginInfo, "POST");
-    return res.token;
+    let res;
+    try {
+      res = await this.request(`auth/token`,loginInfo, "POST");
+      return res.token;
+    } catch (err) {
+      return err;
+    }
   }
 
   /** Register new user and get user's token which can be used to authenticate
@@ -98,8 +102,18 @@ class JoblyApi {
   */
 
   static async getRegisterToken(registrationInfo) {
-    let res = await this.request(`auth/register`,registrationInfo, "POST");
-    return res.token;
+    // for (const field in registrationInfo) {
+    //   if (registrationInfo[field] === null) {
+    //     registrationInfo[field] = '';
+    //   }
+    // }
+    let res;
+    try {
+      res = await this.request(`auth/register`,registrationInfo, "POST");
+      return res.token;
+    } catch (err) {
+      return err;
+    }
   }
 
   /** Get all information about a specific user by username
@@ -110,7 +124,7 @@ class JoblyApi {
    *  { username, firstName, lastName, email, isAdmin, applications }
 
   */
- 
+
   static async getUserData(username) {
     let res = await this.request(`users/${username}`);
     return res.user;

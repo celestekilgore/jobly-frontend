@@ -16,7 +16,6 @@ function LoginForm({ login }) {
 
   /** Update form inputs. */
   function handleChange(evt) {
-    console.log(formData);
     const input = evt.target;
     setFormData(formData => ({
       ...formData,
@@ -34,12 +33,16 @@ function LoginForm({ login }) {
     <form onSubmit={handleSubmit} className="LoginForm">
       <label htmlFor="LoginForm-username">Username</label>
       <input
+        required
         name="username"
         className="LoginForm-username form-control"
         value={formData.username}
         onChange={handleChange} />
       <label htmlFor="LoginForm-password">Password</label>
       <input
+        required
+        type="password"
+        minLength="5"
         name="password"
         className="LoginForm-password form-control"
         value={formData.password}
