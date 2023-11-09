@@ -16,22 +16,33 @@ function CompanyDetailsPage() {
 
   const [company, setCompany] = useState({
     data: null,
-    isLoading: true
+    isLoading: true,
+    errors: null,
   });
 
   useEffect(function fetchCompanyWhenMounted() {
     async function fetchCompany() {
-      const company = await JoblyApi.getCompany(companyName);
+      try {
+        const company = await JoblyApi.getCompany(companyName);
 
-      setCompany({
-        data: company,
-        isLoading: false
-      });
-    }
+        setCompany({
+          data: company,
+          isLoading: false,
+          errors: null
+        });
+      } catch (err) {
+        setCompany({
+          data: company,
+          isLoading: false,
+          errors: err
+        });
+      }
+  }
     fetchCompany();
   }, []);
 
   if (company.isLoading) return <i>Loading...</i>;
+  else if (company.errors) return <i>Error: Company does not exist.</i>
 
   return (
     <div>

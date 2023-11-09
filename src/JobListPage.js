@@ -30,8 +30,7 @@ function JobListPage() {
   }, []);
 
   async function search(term) {
-    const filteredJobs = await JoblyApi.searchForJobs(term);
-    console.log("filtered jobs in search", filteredJobs);
+    const filteredJobs = await JoblyApi.getJobs(term);
     setJobs({
       data: filteredJobs,
       isLoading: false
@@ -43,7 +42,9 @@ function JobListPage() {
   return (
     <div>
       <SearchForm search={search} />
-      <JobList jobs={jobs.data}/>
+      {jobs.data.length !== 0
+      ? <JobList jobs={jobs.data}/>
+      : <i>Error: No matching job found.</i>}
     </div>
   );
 

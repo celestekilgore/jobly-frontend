@@ -10,7 +10,7 @@ function SearchForm({ search }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    search(term);
+    search(term.trim());
     setTerm("");
   }
 

@@ -54,10 +54,11 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Get details for all companies. */
+  /** Get details for all companies or for company(s) matching searched term. */
 
-  static async getCompanies() {
-    let res = await this.request(`companies`);
+  static async getCompanies(term='') {
+    const data = term ? {nameLike:term} : '';
+    let res = await this.request(`companies`,data,"GET");
     return res.companies;
   }
 
@@ -68,27 +69,13 @@ class JoblyApi {
     return res.company;
   }
 
-  /** Get array of companies with names like search term. */
+  /** Get details for all jobs or for job(s) matching searched term. */
 
-  static async searchForCompanies(term) {
-    let res = await this.request(`companies`,{nameLike:term},"GET");
-    return res.companies;
-  }
-
-  /** Get details for all jobs. */
-
-  static async getJobs() {
-    let res = await this.request(`jobs`);
+  static async getJobs(term='') {
+    const data = term ? {title:term} : '';
+    let res = await this.request(`jobs`,data,"GET");
     return res.jobs;
   }
-
-  /** Get array of jobs with titles like search term. */
-
-  static async searchForJobs(term) {
-    let res = await this.request(`jobs`,{title:term},"GET");
-    return res.jobs;
-  }
-
 }
 
 export { JoblyApi };

@@ -30,8 +30,8 @@ function CompanyListPage() {
   }, []);
 
   async function search(term) {
-    const filteredCompanies = await JoblyApi.searchForCompanies(term);
-    console.log("filtered companies in search", filteredCompanies);
+    const filteredCompanies = await JoblyApi.getCompanies(term);
+
     setCompanies({
       data: filteredCompanies,
       isLoading: false
@@ -43,7 +43,9 @@ function CompanyListPage() {
   return (
     <div>
       <SearchForm search={search} />
-      <CompanyList companies={companies.data}/>
+      {companies.data.length !== 0
+      ? <CompanyList companies={companies.data}/>
+      : <i>Error: No matching company found.</i>}
     </div>
   );
 
