@@ -11,7 +11,6 @@ import React, { useState } from "react";
  * { CompanyListPage, JobListPage } -> SearchForm
  */
 function SearchForm({ search }) {
-
   const [term, setTerm] = useState("");
 
   function handleChange(evt) {

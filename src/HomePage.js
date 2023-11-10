@@ -1,10 +1,30 @@
-import React from "react";
+import { React, useContext } from "react";
+import { Link } from "react-router-dom";
+import userContext from "./userContext";
 
+/** Renders Homepage.
+ *
+ * Context:
+ * - user: object like { username, firstName, lastName, email, isAdmin, applications }
+ *
+ * RouteList -> HomePage
+ */
 function HomePage() {
+  const { user } = useContext(userContext);
 
   return (
     <div className="HomePage">
-      <h1>Home Page!</h1>
+      <h1>Jobly</h1>
+      <p>All the jobs in one, convenient place.</p>
+      {user === null &&
+        <div>
+          <Link className="btn btn-primary m-2" to="/login">Log in</Link>
+          <Link className="btn btn-primary m-2" to="/signup">Sign Up</Link>
+        </div>}
+      {user !== null &&
+        <div>
+          <h2>Welcome back, {user.username}!</h2>
+        </div>}
     </div>
   );
 

@@ -82,16 +82,12 @@ class JoblyApi {
   /** Get user's token which can be used to authenticate further requests.
    *
    * Accepts loginInfo like {username, password}
+   * Returns JWT
   */
 
   static async getLoginToken(loginInfo) {
-    let res;
-    try {
-      res = await this.request(`auth/token`,loginInfo, "POST");
-      return res.token;
-    } catch (err) {
-      return err;
-    }
+    const res = await this.request(`auth/token`, loginInfo, "POST");
+    return res.token;
   }
 
   /** Register new user and get user's token which can be used to authenticate
@@ -99,26 +95,17 @@ class JoblyApi {
    *
    * Accepts registration info like
    * {username, password, firstName, lastName, email}
+   * Returns JWT
   */
 
   static async getRegisterToken(registrationInfo) {
-    // for (const field in registrationInfo) {
-    //   if (registrationInfo[field] === null) {
-    //     registrationInfo[field] = '';
-    //   }
-    // }
-    let res;
-    try {
-      res = await this.request(`auth/register`,registrationInfo, "POST");
-      return res.token;
-    } catch (err) {
-      return err;
-    }
+    const res = await this.request(`auth/register`, registrationInfo, "POST");
+    return res.token;
   }
 
   /** Get all information about a specific user by username
    *
-   * Takes in username and user's auth token
+   * Takes in username
    *
    * Returns
    *  { username, firstName, lastName, email, isAdmin, applications }
@@ -126,23 +113,23 @@ class JoblyApi {
   */
 
   static async getUserData(username) {
-    let res = await this.request(`users/${username}`);
+    const res = await this.request(`users/${username}`);
     return res.user;
   }
 
   /** Update a user
    *
-   * Takes in data to update like { firstName, lastName, email }
+   * Takes in data like { username, firstName, lastName, email }
    *
    * Returns
    *  { username, firstName, lastName, email, isAdmin }
 
   */
 
-  static async updateUserData({username,firstName, lastName, email}) {
-    let res = await this.request(
+  static async updateUserData({ username, firstName, lastName, email }) {
+    const res = await this.request(
       `users/${username}`,
-      {firstName, lastName, email},
+      { firstName, lastName, email },
       "PATCH"
     );
     return res.user;

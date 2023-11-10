@@ -4,6 +4,9 @@ import userContext from "./userContext";
 
 /** Nav: Renders navigation bar.
  *
+ * Context:
+ * - user: object like { username, firstName, lastName, email, isAdmin, applications }
+ *
  * Nav -> {Home, Companies, Jobs} */
 
 function Nav({ logout }) {
@@ -13,7 +16,7 @@ function Nav({ logout }) {
   return (
     <nav className="Nav navbar navbar-light bg-light p-3 mb-3">
 
-      {JSON.stringify(user) === "{}" &&
+      {user === null &&
         <div>
           <Link className="m-3" to="/">Jobly</Link>
           <Link className="m-3" to="/login">Login</Link>
@@ -21,13 +24,13 @@ function Nav({ logout }) {
         </div>
       }
 
-      {JSON.stringify(user) !== "{}"  &&
+      {user !== null &&
         <div>
           <Link className="m-3" to="/">Jobly</Link>
           <Link className="m-3" to="/companies">Companies</Link>
           <Link className="m-3" to="/jobs">Jobs</Link>
           <Link className="m-3" to="/profile">Profile</Link>
-          <a className="m-3" onClick={logout}>Log out username goes here</a>
+          <a className="m-3" onClick={logout}>Log out {user.username}</a>
         </div>
       }
 
