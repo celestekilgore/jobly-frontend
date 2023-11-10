@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Alert from "./Alert";
+import { useNavigate } from "react-router-dom"
 
 /** Form for logging user in.
  *
@@ -15,6 +16,7 @@ import Alert from "./Alert";
 function LoginForm({ login }) {
   const [errors, setErrors] = useState(null);
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
 
   /** Update form inputs. */
   function handleChange(evt) {
@@ -25,9 +27,14 @@ function LoginForm({ login }) {
     }));
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(formData).catch((errors) => setErrors(errors));
+    try {
+      await login(formData);
+      navigate("/");
+    } catch(err) {
+      setErrors(err);
+    }
   }
 
   return (
@@ -37,6 +44,7 @@ function LoginForm({ login }) {
         <input
           required
           name="username"
+          id="LoginForm-username"
           className="LoginForm-username form-control"
           value={formData.username}
           onChange={handleChange} />
@@ -46,6 +54,7 @@ function LoginForm({ login }) {
           type="password"
           minLength="5"
           name="password"
+          id="LoginForm-password"
           className="LoginForm-password form-control"
           value={formData.password}
           onChange={handleChange} />

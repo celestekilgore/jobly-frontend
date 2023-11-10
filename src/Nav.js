@@ -30,7 +30,7 @@ function Nav({ logout }) {
           <Link className="m-3" to="/companies">Companies</Link>
           <Link className="m-3" to="/jobs">Jobs</Link>
           <Link className="m-3" to="/profile">Profile</Link>
-          <a className="m-3" onClick={logout}>Log out {user.username}</a>
+          <Link className="m-3" to="/" onClick={logout}>Log out {user.username}</Link>
         </div>
       }
 

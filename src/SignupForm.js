@@ -31,18 +31,19 @@ function SignupForm({ signUp }) {
     }));
   }
 
-
+//FIXME: update error catching
   function handleSubmit(evt) {
     evt.preventDefault();
     signUp(formData).catch((errors) => setErrors(errors));
   }
-
+  //FIXME: update htmlFor
   return (
     <div>
       <form onSubmit={handleSubmit} className="SignupForm form-control">
         <label htmlFor="SignupForm-username">Username</label>
         <input
           required
+          id=""
           name="username"
           className="SignupForm-username form-control"
           value={formData.username}

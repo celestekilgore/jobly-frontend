@@ -21,7 +21,7 @@ function App() {
 
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-
+  //TODO: add try/catch; console.error a
   useEffect(function handleTokenChange() {
     async function getUserData() {
       if (token !== null) {

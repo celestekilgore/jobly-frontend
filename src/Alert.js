@@ -8,6 +8,7 @@ import React from "react";
  *
  * { SignupForm, LoginForm, ProfileUpdateForm } -> Alert
  */
+//TODO: refactor to make more flexible; pass down color directly rather than boolean
 function Alert({ messages, isError }) {
   let color;
   isError ? color = 'danger' : color = 'success';
