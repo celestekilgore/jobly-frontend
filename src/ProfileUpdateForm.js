@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import userContext from "./userContext";
 import Alert from "./Alert";
+import { useNavigate } from "react-router-dom"
 
 /** Form for updating user info.
  *
@@ -22,6 +23,7 @@ function ProfileUpdateForm({ update }) {
     lastName: user.lastName || '',
     email: user.email || ''
   });
+  const navigate = useNavigate();
 
   function handleChange(evt) {
     const input = evt.target;
@@ -31,10 +33,16 @@ function ProfileUpdateForm({ update }) {
     }));
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    update(formData).catch((errors) => setErrors(errors));
+    try {
+      await update(formData);
+      navigate("/");
+    } catch(err) {
+      setErrors(err);
+    }
   }
+
 
   return (
     <div>
@@ -42,6 +50,7 @@ function ProfileUpdateForm({ update }) {
         <label htmlFor="ProfileUpdateForm-username">Username</label>
         <input
           disabled
+          id="ProfileUpdateForm-username"
           required
           name="username"
           className="ProfileUpdateForm-username form-control"
@@ -50,6 +59,7 @@ function ProfileUpdateForm({ update }) {
         <label htmlFor="ProfileUpdateForm-firstName">First Name</label>
         <input
           required
+          id="ProfileUpdateForm-firstName"
           name="firstName"
           className="ProfileUpdateForm-firstName form-control"
           value={formData.firstName}
@@ -57,6 +67,7 @@ function ProfileUpdateForm({ update }) {
         <label htmlFor="ProfileUpdateForm-lastName">Last Name</label>
         <input
           required
+          id="ProfileUpdateForm-lastName"
           name="lastName"
           className="ProfileUpdateForm-lastName form-control"
           value={formData.lastName}
@@ -64,13 +75,14 @@ function ProfileUpdateForm({ update }) {
         <label htmlFor="ProfileUpdateForm-email">Email</label>
         <input
           required
+          id="ProfileUpdateForm-email"
           name="email"
           className="ProfileUpdateForm-email form-control"
           value={formData.email}
           onChange={handleChange} />
         <button className="btn btn-primary">Save Changes</button>
       </form>
-      {errors !== null && <Alert messages={errors} isError={true}></Alert>}
+      {errors !== null && <Alert messages={errors} color="danger"></Alert>}
     </div>
   );
 }

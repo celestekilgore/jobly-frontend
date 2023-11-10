@@ -21,17 +21,24 @@ function App() {
 
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-  //TODO: add try/catch; console.error a
+
   useEffect(function handleTokenChange() {
     async function getUserData() {
+      const token = JSON.parse(localStorage.getItem('token'));
       if (token !== null) {
-        const payload = jwtDecode(token);
-        JoblyApi.token = token;
-        const userData = await JoblyApi.getUserData(payload.username);
-        setUser(userData);
-      } else {
-        JoblyApi.token = token;
+        try {
+          const payload = jwtDecode(token);
+          JoblyApi.token = token;
+          const userData = await JoblyApi.getUserData(payload.username);
+          setUser(userData);
+
+        } catch (err) {
+          console.error(err);
+        }
       }
+      // } else {
+      //   // todo: something related to local storage token and user
+      // }
     }
     getUserData();
   }, [token]);
@@ -39,11 +46,13 @@ function App() {
   async function login(loginData) {
     const resp = await JoblyApi.getLoginToken(loginData);
     setToken(resp);
+    localStorage.setItem('token',JSON.stringify(resp));
   }
 
   async function signUp(registrationData) {
     const resp = await JoblyApi.getRegisterToken(registrationData);
     setToken(resp);
+    localStorage.setItem('token',JSON.stringify(resp));
   }
 
 
@@ -57,6 +66,7 @@ function App() {
 
   function logout() {
     setToken(null);
+    localStorage.setItem('token',JSON.stringify(null));
     setUser(null);
   }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Alert from "./Alert";
+import { useNavigate } from "react-router-dom"
 
 /** Form for registering user.
  *
@@ -21,6 +22,7 @@ function SignupForm({ signUp }) {
     lastName: '',
     email: '',
   });
+  const navigate = useNavigate();
 
   /** Update form inputs. */
   function handleChange(evt) {
@@ -31,19 +33,23 @@ function SignupForm({ signUp }) {
     }));
   }
 
-//FIXME: update error catching
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signUp(formData).catch((errors) => setErrors(errors));
+    try {
+      await signUp(formData);
+      navigate("/");
+    } catch(err) {
+      setErrors(err);
+    }
   }
-  //FIXME: update htmlFor
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="SignupForm form-control">
         <label htmlFor="SignupForm-username">Username</label>
         <input
           required
-          id=""
+          id="SignupForm-username"
           name="username"
           className="SignupForm-username form-control"
           value={formData.username}
@@ -51,6 +57,7 @@ function SignupForm({ signUp }) {
         <label htmlFor="SignupForm-password">Password</label>
         <input
           required
+          id="SignupForm-password"
           minLength="5"
           name="password"
           className="SignupForm-password form-control"
@@ -60,6 +67,7 @@ function SignupForm({ signUp }) {
         <label htmlFor="SignupForm-firstName">First Name</label>
         <input
           required
+          id="SignupForm-firstName"
           name="firstName"
           className="SignupForm-firstName form-control"
           value={formData.firstName}
@@ -67,6 +75,7 @@ function SignupForm({ signUp }) {
         <label htmlFor="SignupForm-lastName">Last Name</label>
         <input
           required
+          id="SignupForm-lastName"
           name="lastName"
           className="SignupForm-lastName form-control"
           value={formData.lastName}
@@ -74,13 +83,14 @@ function SignupForm({ signUp }) {
         <label htmlFor="SignupForm-email">Email</label>
         <input
           required
+          id="SignupForm-email"
           name="email"
           className="SignupForm-email form-control"
           value={formData.email}
           onChange={handleChange} />
         <button className="btn btn-primary">Sign Up</button>
       </form>
-      {errors !== null && <Alert messages={errors} isError={true}></Alert>}
+      {errors !== null && <Alert messages={errors} color="danger"></Alert>}
     </div>
   );
 }

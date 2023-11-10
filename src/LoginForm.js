@@ -60,7 +60,7 @@ function LoginForm({ login }) {
           onChange={handleChange} />
         <button className="btn btn-primary">Login</button>
       </form>
-      {errors !== null && <Alert messages={errors} isError={true}></Alert>}
+      {errors !== null && <Alert messages={errors} color="danger"></Alert>}
     </div>
   );
 }
