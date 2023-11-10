@@ -17,7 +17,7 @@ import ProfileUpdateForm from "./ProfileUpdateForm";
  * App -> RouteList -> {
  *  HomePage, CompanyListPage, CompanyDetailsPage, JobListPage, LoginForm }*/
 
-function RouteList({login, signUp}) {
+function RouteList({ login, signUp, update }) {
 
   return (
     <Routes>
@@ -27,7 +27,7 @@ function RouteList({login, signUp}) {
       <Route path="/jobs" element={<JobListPage />} />
       <Route path="/login" element={<LoginForm login={login} />} />
       <Route path="/signup" element={<SignupForm signUp={signUp} />} />
-      <Route path="/profile" element={<ProfileUpdateForm />} />
+      <Route path="/profile" element={<ProfileUpdateForm update={update} />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

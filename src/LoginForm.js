@@ -13,6 +13,7 @@ import React, { useState } from "react";
 function LoginForm({ login }) {
 
   const [formData, setFormData] = useState({username:"",password:""});
+  // add errors state
 
   /** Update form inputs. */
   function handleChange(evt) {
@@ -25,6 +26,7 @@ function LoginForm({ login }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    // try login, catch
     login(formData);
     setFormData({ username: "", password: "" });
   }
