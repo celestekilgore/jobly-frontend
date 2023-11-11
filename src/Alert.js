@@ -4,7 +4,7 @@ import React from "react";
  *
  * Props:
  * - messages: array like ['error1', 'error2', ... ]
- * -isError: boolean
+ * -color: color for bootstrap error message like "alert"
  *
  * { SignupForm, LoginForm, ProfileUpdateForm } -> Alert
  */

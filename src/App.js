@@ -7,6 +7,8 @@ import userContext from "./userContext";
 import { JoblyApi } from "./api";
 import { jwtDecode } from "jwt-decode";
 
+const LOCAL_STORAGE_TOKEN_KEY = "token";
+
 
 /** App component
  *
@@ -19,43 +21,44 @@ import { jwtDecode } from "jwt-decode";
 
 function App() {
 
-  const [token, setToken] = useState(null);
+  const storedToken = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+  const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
 
+  /** handles token change --> updates user state */
   useEffect(function handleTokenChange() {
     async function getUserData() {
-      const token = JSON.parse(localStorage.getItem('token'));
       if (token !== null) {
         try {
+          localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
           const payload = jwtDecode(token);
           JoblyApi.token = token;
           const userData = await JoblyApi.getUserData(payload.username);
           setUser(userData);
-
         } catch (err) {
           console.error(err);
         }
+      } else {
+        setUser(null);
+        localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       }
-      // } else {
-      //   // todo: something related to local storage token and user
-      // }
     }
     getUserData();
   }, [token]);
 
+  /** login a user and set token state */
   async function login(loginData) {
     const resp = await JoblyApi.getLoginToken(loginData);
     setToken(resp);
-    localStorage.setItem('token',JSON.stringify(resp));
   }
 
+  /** add new user and set token state */
   async function signUp(registrationData) {
     const resp = await JoblyApi.getRegisterToken(registrationData);
     setToken(resp);
-    localStorage.setItem('token',JSON.stringify(resp));
   }
 
-
+  /** update user data and reset user state */
   async function update(userData) {
     const resp = await JoblyApi.updateUserData(userData);
     setUser(user => ({
@@ -64,10 +67,15 @@ function App() {
     }));
   }
 
+  /** logout --> remove token and user state */
   function logout() {
     setToken(null);
-    localStorage.setItem('token',JSON.stringify(null));
+    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(null));
     setUser(null);
+  }
+
+  if (token !== null && user === null) {
+    return <p>Loading...</p>;
   }
 
   return (

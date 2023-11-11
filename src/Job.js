@@ -11,7 +11,7 @@ import React from "react";
 
 function Job({ job }) {
   return (
-    <div className="Job">
+    <div className="Job card p-3 m-3">
       <h2>{job.title}</h2>
       {job.companyName && <p>{job.companyName}</p>}
       {job.salary && <p>Salary: {job.salary}</p>}

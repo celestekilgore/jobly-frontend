@@ -16,7 +16,7 @@ function Nav({ logout }) {
   return (
     <nav className="Nav navbar navbar-light bg-light p-3 mb-3">
 
-      {user === null &&
+      {!user &&
         <div>
           <Link className="m-3" to="/">Jobly</Link>
           <Link className="m-3" to="/login">Login</Link>
@@ -24,7 +24,7 @@ function Nav({ logout }) {
         </div>
       }
 
-      {user !== null &&
+      {user &&
         <div>
           <Link className="m-3" to="/">Jobly</Link>
           <Link className="m-3" to="/companies">Companies</Link>

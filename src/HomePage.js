@@ -16,12 +16,12 @@ function HomePage() {
     <div className="HomePage">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
-      {user === null &&
+      {!user &&
         <div>
           <Link className="btn btn-primary m-2" to="/login">Log in</Link>
           <Link className="btn btn-primary m-2" to="/signup">Sign Up</Link>
         </div>}
-      {user !== null &&
+      {user &&
         <div>
           <h2>Welcome back, {user.username}!</h2>
         </div>}

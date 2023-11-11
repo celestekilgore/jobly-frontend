@@ -8,22 +8,25 @@ import { useNavigate } from "react-router-dom"
  * State:
  * - formData: object like { username, firstName, lastName, email }
  * - errors: array like ['error1', 'error2', ... ]
+ * - messages: array like ['success message']
  *
  * Prop:
  * - update(): function to call in parent.
  *
  * RouteList -> ProfileUpdateForm
  */
+
 function ProfileUpdateForm({ update }) {
   const { user } = useContext(userContext);
   const [errors, setErrors] = useState(null);
+  const [messages, setMessages] = useState(null);
   const [formData, setFormData] = useState({
     username: user.username || '',
     firstName: user.firstName || '',
     lastName: user.lastName || '',
     email: user.email || ''
   });
-  const navigate = useNavigate();
+
 
   function handleChange(evt) {
     const input = evt.target;
@@ -37,7 +40,8 @@ function ProfileUpdateForm({ update }) {
     evt.preventDefault();
     try {
       await update(formData);
-      navigate("/");
+      setErrors(null);
+      setMessages(["Successfully updated profile."]);
     } catch(err) {
       setErrors(err);
     }
@@ -83,6 +87,7 @@ function ProfileUpdateForm({ update }) {
         <button className="btn btn-primary">Save Changes</button>
       </form>
       {errors !== null && <Alert messages={errors} color="danger"></Alert>}
+      {messages !== null && <Alert messages={messages} color="success"></Alert>}
     </div>
   );
 }
