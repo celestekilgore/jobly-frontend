@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import userContext from "../auth/userContext";
 import Alert from "../common/Alert";
-import { useNavigate } from "react-router-dom"
+import "./ProfileUpdateForm.css";
 
 /** Form for updating user info.
  *

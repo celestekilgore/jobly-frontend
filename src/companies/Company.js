@@ -14,7 +14,7 @@ import "./Company.css";
 function Company({ company }) {
 
   return (
-    <Link className="Company card shadow m-4 width-75" to={`/companies/${company.handle}`}>
+    <Link className="Company card rounded shadow m-4 width-75" to={`/companies/${company.handle}`}>
       <div className="card-body">
         <h4 className="card-title">
           {company.name}
