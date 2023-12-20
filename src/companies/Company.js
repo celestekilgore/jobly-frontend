@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Company.css";
 
 /** Render Company component.
  *
@@ -13,8 +14,8 @@ import { Link } from "react-router-dom";
 function Company({ company }) {
 
   return (
-    <Link style={{ textDecoration: 'none' }} className="Company card shadow m-4 width-75" to={`/companies/${company.handle}`}>
-      <div className="card-body text-decoration-none">
+    <Link className="Company card shadow m-4 width-75" to={`/companies/${company.handle}`}>
+      <div className="card-body">
         <h4 className="card-title">
           {company.name}
           {company.logoUrl && <img src={company.logoUrl}

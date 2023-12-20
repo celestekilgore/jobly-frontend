@@ -1,5 +1,8 @@
 .Homepage {
+  /* put around the vertical center of page */
+  height: calc(100vh - 150px);
   display: flex;
-  align-items: center !important;  /*Aligns vertically center */
-  justify-content: center !important; /*Aligns horizontally center */
+  align-items: center;
+  color: black;
+  text-shadow: 2px 2px 5px rgb(145, 145, 144);
 }

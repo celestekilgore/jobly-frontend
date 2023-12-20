@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { JoblyApi } from "../api/api";
 import JobList from "../jobs/JobList";
+import "./CompanyDetailsPage.css";
 
 /** Displays company details and renders list of related jobs.
  *
@@ -48,8 +49,10 @@ function CompanyDetailsPage() {
 
   return (
     <div className="CompanyDetailsPage col-md-8 offset-md-2">
+      <div className="heading bg-dark p-3 rounded">
       <h2 className="CompanyDetailsPage">{company.data.name}</h2>
       <p className="CompanyDetailsPage">{company.data.description}</p>
+      </div>
       <JobList jobs={company.data.jobs} />
     </div>
   );
