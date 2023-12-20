@@ -13,18 +13,27 @@ function HomePage() {
   const { user } = useContext(userContext);
 
   return (
-    <div className="HomePage">
-      <h1>Jobly</h1>
-      <p>All the jobs in one, convenient place.</p>
-      {!user &&
-        <div>
-          <Link className="btn btn-primary m-2" to="/login">Log in</Link>
-          <Link className="btn btn-primary m-2" to="/signup">Sign Up</Link>
-        </div>}
-      {user &&
-        <div>
-          <h2>Welcome back, {user.username}!</h2>
-        </div>}
+    <div className="Homepage">
+      <div className="container text-center">
+        <h1 className="mb-4 fw-bold">Jobly</h1>
+        <p className="lead">All the jobs in one, convenient place.</p>
+        {user
+          ? <h2>
+            Welcome Back, {user.firstName || user.username}!
+          </h2>
+          : (
+            <p>
+              <Link className="btn btn-primary fw-bold me-3"
+                to="/login">
+                Log in
+              </Link>
+              <Link className="btn btn-primary fw-bold"
+                to="/signup">
+                Sign up
+              </Link>
+            </p>
+          )}
+      </div>
     </div>
   );
 

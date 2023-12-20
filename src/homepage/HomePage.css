@@ -1,0 +1,5 @@
+.Homepage {
+  display: flex;
+  align-items: center !important;  /*Aligns vertically center */
+  justify-content: center !important; /*Aligns horizontally center */
+}

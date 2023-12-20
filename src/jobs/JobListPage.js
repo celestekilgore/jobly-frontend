@@ -35,14 +35,15 @@ function JobListPage() {
   if (jobs.isLoading) return <i>Loading...</i>;
 
   return (
-    <div className="JobListPage">
+    <div className="JobListPage col-md-8 offset-md-2">
       <SearchForm search={search} />
       {jobs.data.length !== 0
         ? <JobList jobs={jobs.data} />
-        : <i>No matching job found.</i>
+        : <i>Sorry, no matching jobs found.</i>
       }
     </div>
   );
+
 }
 
 export default JobListPage;

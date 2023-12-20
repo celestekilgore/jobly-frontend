@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 import userContext from "../auth/userContext";
 
@@ -14,25 +14,55 @@ function Nav({ logout }) {
   const { user } = useContext(userContext);
 
   return (
-    <nav className="Nav navbar navbar-light bg-light p-3 mb-3">
+    <nav className="Navigation navbar navbar-expand-md navbar-dark bg-dark mb-4">
 
-      {!user &&
-        <div>
-          <Link className="m-3" to="/">Jobly</Link>
-          <Link className="m-3" to="/login">Login</Link>
-          <Link className="m-3" to="/signup">Sign Up</Link>
-        </div>
-      }
+      <div className="container-fluid">
 
-      {user &&
-        <div>
-          <Link className="m-3" to="/">Jobly</Link>
-          <Link className="m-3" to="/companies">Companies</Link>
-          <Link className="m-3" to="/jobs">Jobs</Link>
-          <Link className="m-3" to="/profile">Profile</Link>
-          <Link className="m-3" to="/" onClick={logout}>Log out {user.username}</Link>
-        </div>
-      }
+        <Link className="navbar-brand" to="/">
+          Jobly
+        </Link>
+
+        {!user &&
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item me-4">
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li className="nav-item me-4">
+              <NavLink className="nav-link" to="/signup">
+                Sign Up
+              </NavLink>
+            </li>
+          </ul>
+        }
+
+        {user &&
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item me-4">
+              <NavLink className="nav-link" to="/companies">
+                Companies
+              </NavLink>
+            </li>
+            <li className="nav-item me-4">
+              <NavLink className="nav-link" to="/jobs">
+                Jobs
+              </NavLink>
+            </li>
+            <li className="nav-item me-4">
+              <NavLink className="nav-link" to="/profile">
+                Profile
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={logout}>
+                Log out {user.first_name || user.username}
+              </Link>
+            </li>
+          </ul>
+
+        }
+      </div>
 
     </nav>
   );
