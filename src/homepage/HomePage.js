@@ -1,6 +1,6 @@
 import { React, useContext } from "react";
 import { Link } from "react-router-dom";
-import userContext from "./userContext";
+import userContext from "../auth/userContext";
 
 /** Renders Homepage.
  *

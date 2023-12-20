@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
-import Nav from "./Nav";
-import RouteList from "./RouteList";
-import userContext from "./userContext";
-import { JoblyApi } from "./api";
+import Nav from "./routes-nav/Nav";
+import RouteList from "./routes-nav/RouteList";
+import userContext from "./auth/userContext";
+import { JoblyApi } from "./api/api";
 import { jwtDecode } from "jwt-decode";
 
 const LOCAL_STORAGE_TOKEN_KEY = "token";

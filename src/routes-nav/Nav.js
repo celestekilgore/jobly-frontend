@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
-import userContext from "./userContext";
+import userContext from "../auth/userContext";
 
 /** Nav: Renders navigation bar.
  *

@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from "./HomePage";
-import CompanyListPage from "./CompanyListPage";
-import JobListPage from "./JobListPage";
-import CompanyDetailsPage from "./CompanyDetailsPage";
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
-import ProfileUpdateForm from "./ProfileUpdateForm";
-import userContext from "./userContext";
+import HomePage from "../homepage/HomePage";
+import CompanyListPage from "../companies/CompanyListPage";
+import JobListPage from "../jobs/JobListPage";
+import CompanyDetailsPage from "../companies/CompanyDetailsPage";
+import LoginForm from "../auth/LoginForm";
+import SignupForm from "../auth/SignupForm";
+import ProfileUpdateForm from "../profiles/ProfileUpdateForm";
+import userContext from "../auth/userContext";
 
 /** RouteList: renders all of jobly's route components.
  *
@@ -39,7 +39,7 @@ function RouteList({ login, signUp, update }) {
           <Route path="/signup" element={<SignupForm signUp={signUp} />} />
         </Route>
       }
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/" element={<HomePage/>} />
     </Routes>
   );
 

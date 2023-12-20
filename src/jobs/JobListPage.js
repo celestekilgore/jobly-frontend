@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import SearchForm from "./SearchForm";
+import SearchForm from "../common/SearchForm";
 import JobList from "./JobList";
-import { JoblyApi } from "./api";
+import { JoblyApi } from "../api/api";
 
 /** Fetches data for all jobs and renders JobList and SearchForm.
  *
