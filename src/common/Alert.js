@@ -9,11 +9,16 @@ import React from "react";
  * { SignupForm, LoginForm, ProfileUpdateForm } -> Alert
  */
 
-function Alert({ messages, color }) {
+function Alert({ type = "danger", messages = [] }) {
+  console.debug("Alert", "type=", type, "messages=", messages);
 
   return (
-    <div className={`Alert alert alert-${color}`}>
-      {messages.map((message, idx) => <div key={idx}><i>{message}</i><br /></div>)}
+    <div className={`alert alert-${type}`} role="alert">
+      {messages.map(error => (
+        <p className="mb-0 small" key={error}>
+          {error}
+        </p>
+      ))}
     </div>
   );
 }

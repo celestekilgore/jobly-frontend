@@ -36,11 +36,11 @@ function CompanyListPage() {
   if (companies.isLoading) return <i>Loading...</i>;
 
   return (
-    <div className="CompanyListPage">
+    <div className="CompanyListPage col-md-8 offset-md-2">
       <SearchForm search={search} />
       {companies.data.length !== 0
         ? <CompanyList companies={companies.data} />
-        : <i>No matching company found.</i>}
+        : <i className="lead">Sorry, no results were found!</i>}
     </div>
   );
 

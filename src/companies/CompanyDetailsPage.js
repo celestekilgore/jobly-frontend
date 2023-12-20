@@ -47,9 +47,9 @@ function CompanyDetailsPage() {
   if (company.errors) return <i>Not found.</i>;
 
   return (
-    <div className="CompanyDetailsPage">
-      <h2>{company.data.name}</h2>
-      <p>{company.data.description}</p>
+    <div className="CompanyDetailsPage col-md-8 offset-md-2">
+      <h2 className="CompanyDetailsPage">{company.data.name}</h2>
+      <p className="CompanyDetailsPage">{company.data.description}</p>
       <JobList jobs={company.data.jobs} />
     </div>
   );
