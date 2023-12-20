@@ -30,7 +30,7 @@ function SearchForm({ search }) {
 
       <form onSubmit={handleSubmit}>
         <div className="row justify-content-center gx-0">
-          <div className="col-8 mr-1">
+          <div className="col-8">
             <input
               className="form-control"
               name="searchTerm"

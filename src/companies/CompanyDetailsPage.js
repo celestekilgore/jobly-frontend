@@ -49,7 +49,7 @@ function CompanyDetailsPage() {
 
   return (
     <div className="CompanyDetailsPage col-md-8 offset-md-2">
-      <div className="heading bg-dark p-3 rounded">
+      <div className="heading">
       <h2 className="CompanyDetailsPage">{company.data.name}</h2>
       <p className="CompanyDetailsPage">{company.data.description}</p>
       </div>
