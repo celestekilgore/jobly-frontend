@@ -1,4 +1,10 @@
 .SignupForm h2 {
-  color: black;
+  /* color: black; */
+  color: #001861;
   text-shadow: 2px 2px 5px rgb(52, 48, 47);
+}
+
+.SignupForm button {
+    background-color: #001861;
+    color: white;
 }

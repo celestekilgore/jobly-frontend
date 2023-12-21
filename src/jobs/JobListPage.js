@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SearchForm from "../common/SearchForm";
 import JobList from "./JobList";
 import { JoblyApi } from "../api/api";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 /** Fetches data for all jobs and renders JobList and SearchForm.
  *
@@ -32,7 +33,7 @@ function JobListPage() {
     });
   }
 
-  if (jobs.isLoading) return <i>Loading...</i>;
+  if (jobs.isLoading) return <LoadingSpinner />
 
   return (
     <div className="JobListPage col-md-8 offset-md-2">

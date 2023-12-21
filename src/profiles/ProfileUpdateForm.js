@@ -103,7 +103,7 @@ function ProfileUpdateForm({ update }) {
               : null}
 
             <div className="d-grid">
-              <button className="btn btn-primary" onClick={handleSubmit}>
+              <button className="btn" onClick={handleSubmit}>
                 Save Changes
               </button>
             </div>

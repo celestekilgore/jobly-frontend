@@ -6,6 +6,7 @@ import RouteList from "./routes-nav/RouteList";
 import userContext from "./auth/userContext";
 import { JoblyApi } from "./api/api";
 import { jwtDecode } from "jwt-decode";
+import LoadingSpinner from "./common/LoadingSpinner";
 
 const LOCAL_STORAGE_TOKEN_KEY = "token";
 
@@ -75,7 +76,7 @@ function App() {
   }
 
   if (token !== null && user === null) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />
   }
 
   return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { JoblyApi } from "../api/api";
 import CompanyList from "./CompanyList";
 import SearchForm from "../common/SearchForm";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 
 /** Fetches data for all companies and renders CompanyList and SearchForm.
@@ -33,7 +34,7 @@ function CompanyListPage() {
     });
   }
 
-  if (companies.isLoading) return <i>Loading...</i>;
+  if (companies.isLoading) return <LoadingSpinner />;
 
   return (
     <div className="CompanyListPage col-md-8 offset-md-2">

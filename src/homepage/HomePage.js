@@ -24,11 +24,11 @@ function HomePage() {
           </h2>
           : (
             <p>
-              <Link className="btn btn-primary fw-bold me-3"
+              <Link className="btn fw-bold me-3"
                 to="/login">
                 Log in
               </Link>
-              <Link className="btn btn-primary fw-bold"
+              <Link className="btn fw-bold"
                 to="/signup">
                 Sign up
               </Link>

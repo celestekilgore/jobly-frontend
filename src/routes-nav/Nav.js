@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 import userContext from "../auth/userContext";
-import "./Nav.css";
+import "./Nav.css"
 
 /** Nav: Renders navigation bar.
  *
@@ -15,7 +15,7 @@ function Nav({ logout }) {
   const { user } = useContext(userContext);
 
   return (
-    <nav className="Navigation navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <nav style={{backgroundColor: "#001861"}} className="Navigation navbar navbar-expand-md navbar-dark mb-4">
 
       <div className="container-fluid">
 

@@ -1,7 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
-  background: url(jobly-background.png);
+  background: url(background.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -106,7 +106,7 @@ function SignupForm({ signUp }) {
               }
 
               <div className="d-grid">
-                <button className="btn btn-primary" onClick={handleSubmit}>
+                <button className="btn" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>

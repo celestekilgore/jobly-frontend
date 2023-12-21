@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { JoblyApi } from "../api/api";
 import JobList from "../jobs/JobList";
 import "./CompanyDetailsPage.css";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 /** Displays company details and renders list of related jobs.
  *
@@ -44,12 +45,12 @@ function CompanyDetailsPage() {
     fetchCompany();
   }, [companyName]);
 
-  if (company.isLoading) return <i>Loading...</i>;
+  if (company.isLoading) return <LoadingSpinner />
   if (company.errors) return <i>Not found.</i>;
 
   return (
     <div className="CompanyDetailsPage col-md-8 offset-md-2">
-      <div className="heading">
+      <div className="heading rounded">
       <h2 className="CompanyDetailsPage">{company.data.name}</h2>
       <p className="CompanyDetailsPage">{company.data.description}</p>
       </div>

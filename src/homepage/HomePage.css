@@ -6,3 +6,13 @@
   color: black;
   text-shadow: 2px 2px 5px rgb(145, 145, 144);
 }
+
+.Homepage h1 {
+  color: #001861;
+}
+
+.Homepage .btn {
+  background-color: #001861;
+  color: white;
+  text-shadow: none;
+}
