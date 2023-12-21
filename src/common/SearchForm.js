@@ -40,7 +40,7 @@ function SearchForm({ search }) {
             />
           </div>
           <div className="col-auto">
-            <button type="submit" className="btn btn-md btn-primary">
+            <button type="submit" className="btn btn-md">
               Search!
             </button>
           </div>

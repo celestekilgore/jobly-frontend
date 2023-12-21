@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "../homepage/HomePage";
 import CompanyListPage from "../companies/CompanyListPage";
 import JobListPage from "../jobs/JobListPage";

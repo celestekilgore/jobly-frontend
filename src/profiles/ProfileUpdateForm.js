@@ -26,8 +26,6 @@ function ProfileUpdateForm({ update }) {
     lastName: user.lastName || '',
     email: user.email || ''
   });
-  const [saveConfirmed, setSaveConfirmed] = useState(false);
-
 
   function handleChange(evt) {
     const input = evt.target;
@@ -43,7 +41,6 @@ function ProfileUpdateForm({ update }) {
       await update(formData);
       setErrors([]);
       setMessages(["Successfully updated profile."]);
-      setSaveConfirmed(true);
     } catch(err) {
       setMessages([]);
       setErrors([...err]);
