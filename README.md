@@ -42,3 +42,7 @@ npm install
 npm start
 ```
 the frontend will run locally on port 3000
+
+## Todo
+- Add "apply" feature.
+- Add more in-depth testing.
